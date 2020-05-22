@@ -50,7 +50,7 @@ const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'N
 
 const display = document.querySelector('#bands');
 
-const sortedBands = function(a, b) {
+function sortBands(a, b) {
   aBand = removeArticles(a);
   bBand = removeArticles(b);
 
@@ -67,9 +67,7 @@ function removeArticles(string){
   }
 }
 
-console.log(sortedBands);
-
-display.innerHTML = sortedBands.map(band => {
+display.innerHTML = bands.sort(sortBands).map(band => {
   return `
     <li>${band}</li>
   `;
