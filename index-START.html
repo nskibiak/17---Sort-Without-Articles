@@ -49,10 +49,27 @@
 const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
 
 const display = document.querySelector('#bands');
-const articles = ['The', 'A', 'An'];
 
+const sortedBands = function(a, b) {
+  aBand = removeArticles(a);
+  bBand = removeArticles(b);
 
-display.innerHTML = bands.sort().map(band => {
+  if (aBand > bBand) return 1;
+  if (aBand < bBand) return -1;
+}
+
+function removeArticles(string){
+  words = string.split(' ');
+  if ( ['The', 'A', 'An'].includes(words[0]) ) {
+    return words.splice(1).join(" ");
+  } else {
+    return words.join(" ");
+  }
+}
+
+console.log(sortedBands);
+
+display.innerHTML = sortedBands.map(band => {
   return `
     <li>${band}</li>
   `;
